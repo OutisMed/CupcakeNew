@@ -118,6 +118,9 @@ fun CupcakeApp(
                    modifier = Modifier.fillMaxHeight()
                )
            }
+           composable(route = CupcakeScreen.Pickup.name) {
+
+           }
        }
     }
 
