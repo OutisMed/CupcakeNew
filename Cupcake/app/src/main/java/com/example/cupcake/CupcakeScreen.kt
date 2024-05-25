@@ -15,6 +15,7 @@
  */
 package com.example.cupcake
 
+import android.content.Context
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -162,4 +163,9 @@ private fun cancelOrderAndNavigateToStart(
 ) {
     viewModel.resetOrder()
     navController.popBackStack(CupcakeScreen.Start.name, inclusive = false)
+}
+
+
+
+private fun shareOrder(context: Context) {
 }

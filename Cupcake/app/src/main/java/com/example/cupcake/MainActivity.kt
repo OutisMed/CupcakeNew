@@ -18,6 +18,8 @@ package com.example.cupcake
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.cupcake.ui.theme.CupcakeTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,5 +35,13 @@ class MainActivity : ComponentActivity() {
 
     private fun enableEdgeToEdge() {
         TODO("Not yet implemented")
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview(){
+    CupcakeTheme {
+        CupcakeApp()
     }
 }
