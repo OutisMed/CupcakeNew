@@ -98,8 +98,8 @@ fun CupcakeApp(
         topBar = {
             CupcakeAppBar(
                 currentScreen = currentScreen,
-                canNavigateBack = false,
-                navigateUp = { /* TODO: implement back navigation */ }
+                canNavigateBack = navController.previousBackStackEntry != null,
+                navigateUp = { navController.navigateUp() }
             )
         }
     ) { it ->
