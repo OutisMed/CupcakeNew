@@ -108,7 +108,10 @@ fun CupcakeApp(
                    onNextButtonClicked = {
                        viewModel.setQuantity(it)
                        navController.navigate(CupcakeScreen.Flavor.name)
-                   }
+                   },
+                   modifier = Modifier
+                       .fillMaxSize()
+                       .padding(dimensionResource(R.dimen.padding_medium))
                )
            }
            composable(route = CupcakeScreen.Flavor.name) {
@@ -116,7 +119,9 @@ fun CupcakeApp(
                SelectOptionScreen(
                    subtotal = uiState.price,
                    onNextButtonClicked = { navController.navigate(CupcakeScreen.Pickup.name) },
-                   onCancelButtonClicked = {},
+                   onCancelButtonClicked = {
+                       cancelOrderAndNavigateToStart(viewModel, navController)
+                   },
                    options = DataSource.flavors.map { id -> context.resources.getString(id) },
                    onSelectionChanged = { viewModel.setFlavor(it) },
                    modifier = Modifier.fillMaxHeight()
@@ -126,6 +131,9 @@ fun CupcakeApp(
                SelectOptionScreen(
                    subtotal = uiState.price,
                    onNextButtonClicked = { navController.navigate(CupcakeScreen.Summary.name) },
+                   onCancelButtonClicked = {
+                       cancelOrderAndNavigateToStart(viewModel, navController)
+                   },
                    options = uiState.pickupOptions,
                    onSelectionChanged = { viewModel.setDate(it) },
                    modifier = Modifier.fillMaxHeight()
@@ -134,7 +142,9 @@ fun CupcakeApp(
            composable(route = CupcakeScreen.Summary.name) {
                OrderSummaryScreen(
                    orderUiState = uiState,
-                   onCancelButtonClicked = {},
+                   onCancelButtonClicked = {
+                       cancelOrderAndNavigateToStart(viewModel, navController)
+                   },
                    onSendButtonClicked = { subject: String, summary: String ->
 
                    },
